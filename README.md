@@ -1,0 +1,1 @@
+Allows Category, Arrow, and ArrowChoice instances for Pipes.Pipe, using newtype wrapper 'PipeC'
