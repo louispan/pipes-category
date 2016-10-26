@@ -29,7 +29,6 @@ executable pipes-category-exe
   main-is:             Main.hs
   ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
-                     , lens
                      , pipes
                      , pipes-category
                      , transformers
