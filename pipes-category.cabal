@@ -1,6 +1,6 @@
 name:                pipes-category
 version:             0.1.0.0
-synopsis:            Allows instances for Category, Arrow and ArrowChoice for Pipes.Pipe using newtypewrapper PipeC.
+synopsis:            Allows instances for Category, Arrow and ArrowChoice for Pipes.
 description:         Please see README.md
 homepage:            https://github.com/louispan/pipes-category#readme
 license:             BSD3
