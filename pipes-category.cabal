@@ -1,5 +1,5 @@
 name:                pipes-category
-version:             0.1.0.1
+version:             0.2.0.0
 synopsis:            Allows instances for Category, Arrow and ArrowChoice for Pipes.
 description:         Please see README.md
 homepage:            https://github.com/louispan/pipes-category#readme
@@ -15,7 +15,7 @@ tested-with:         GHC == 7.10.3, GHC == 8.0.1
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Pipes.PipeC
+  exposed-modules:     Pipes.Shaft
   build-depends:       base >= 4.7 && < 5
                      , lens >= 4 && < 5
                      , mtl >= 2 && < 3
