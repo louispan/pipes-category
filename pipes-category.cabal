@@ -30,7 +30,7 @@ test-suite pipes-category-test
   main-is:             Spec.hs
   build-depends:       base >= 4.7 && < 5
                      , pipes >= 4 && < 5
-                     , pipes-category >= 0.1.0.0
+                     , pipes-category
                      , transformers >= 0.4 && < 0.6
                      , hspec >= 2 && < 3
   ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
