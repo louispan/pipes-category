@@ -23,14 +23,14 @@ makeWrapped ''Shaft
 
 instance Monad m => Category (Shaft r m) where
   id = Shaft P.cat
-  {-# INLINE id #-}
+  {-# INLINABLE id #-}
 
   (Shaft a) . (Shaft b) = Shaft (b P.>-> a)
-  {-# INLINE (.) #-}
+  {-# INLINABLE (.) #-}
 
 instance Monad m => Arrow (Shaft r m) where
   arr f = Shaft (PE.arr f)
-  {-# INLINE arr #-}
+  {-# INLINABLE arr #-}
 
   -- | Send the first component of the input through the argument arrow, and copy the rest unchanged to the output.
   -- first :: Monad m => Shaft r m b c -> Shaft r m (b, d) (c, d)
@@ -103,10 +103,10 @@ instance Monad m => Arrow (Shaft r m) where
 
 instance Monad m => ArrowChoice (Shaft r m) where
   left (Shaft a) = Shaft (PE.left a)
-  {-# INLINE left #-}
+  {-# INLINABLE left #-}
 
   right (Shaft a) = Shaft (PE.right a)
-  {-# INLINE right #-}
+  {-# INLINABLE right #-}
 
   (Shaft a) +++ (Shaft b) = Shaft (a PE.+++ b)
-  {-# INLINE (+++) #-}
+  {-# INLINABLE (+++) #-}
