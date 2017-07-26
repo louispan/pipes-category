@@ -17,7 +17,7 @@ import qualified Pipes.Extras as PE
 import qualified Pipes.Lift as PL
 import qualified Pipes.Prelude as PP
 
-newtype Shaft r m b c = Shaft { runShaft :: P.Pipe b c m r }
+newtype Shaft r m b c = Shaft { shafted :: P.Pipe b c m r }
 
 makeWrapped ''Shaft
 
@@ -60,7 +60,7 @@ instance Monad m => Arrow (Shaft r m) where
   -- second :: Monad m => Shaft r m b c -> Shaft r m (d, b) (d, c)
   -- Don't use *** as an optimization, as it will require running first twice.
   second (Shaft bc) = Shaft $ PP.map swap
-    P.>-> runShaft (first $ Shaft bc)
+    P.>-> shafted (first $ Shaft bc)
     -- P.>->  (_Unwrapping Shaft %~ first $ bc)
     P.>-> PP.map swap
 

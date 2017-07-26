@@ -1,7 +1,7 @@
 name:                pipes-category
 version:             0.2.0.1
 synopsis:            Allows instances for Category, Arrow and ArrowChoice for Pipes.
-description:         Allows instances for Category, Arrow and ArrowChoice for Pipes.
+description:         Allows Category, Arrow, and ArrowChoice instances for Pipes.Pipe, using newtype wrapper 'Shaft'
 homepage:            https://github.com/louispan/pipes-category#readme
 license:             BSD3
 license-file:        LICENSE

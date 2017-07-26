@@ -42,34 +42,34 @@ main =
               let xs = PP.toList
                       (sig1
                        P.>-> PP.map duplicate
-                       P.>-> PS.runShaft (first $ PS.Shaft (PP.map (+ 10))))
+                       P.>-> PS.shafted (first $ PS.Shaft (PP.map (+ 10))))
               xs `shouldBe` zip ((+ 10) <$> data1) data1
 
           it "second" $ do
               let xs = PP.toList
                        (sig1
                         P.>-> PP.map duplicate
-                        P.>-> PS.runShaft (second $ PS.Shaft (PP.map (+ 10))))
+                        P.>-> PS.shafted (second $ PS.Shaft (PP.map (+ 10))))
               xs `shouldBe` zip data1 ((+ 10) <$> data1)
 
           it "***" $ do
               let xs = PP.toList
                        (sig1
                         P.>-> PP.map duplicate
-                        P.>-> PS.runShaft (PS.Shaft (PP.map (+ 10)) *** PS.Shaft (PP.map (+ 20))))
+                        P.>-> PS.shafted (PS.Shaft (PP.map (+ 10)) *** PS.Shaft (PP.map (+ 20))))
               xs `shouldBe` zip ((+ 10) <$> data1) ((+ 20)<$> data1)
 
           it "&&&" $ do
               let xs = PP.toList
                        (sig1
-                        P.>-> PS.runShaft (PS.Shaft (PP.map (+ 10)) &&& PS.Shaft (PP.map (+ 20))))
+                        P.>-> PS.shafted (PS.Shaft (PP.map (+ 10)) &&& PS.Shaft (PP.map (+ 20))))
               xs `shouldBe` zip ((+ 10) <$> data1) ((+ 20)<$> data1)
 
       describe "ArrowChoice" $ do
           it "left" $ do
               let xs = PP.toList
                        (sig2
-                        P.>-> PS.runShaft (left $ PS.Shaft (PP.map (+ 10))))
+                        P.>-> PS.shafted (left $ PS.Shaft (PP.map (+ 10))))
               xs `shouldBe` ((\a -> case a of
                                      Left a' -> Left (a' + 10)
                                      Right a' -> Right a') <$> data2)
@@ -77,7 +77,7 @@ main =
           it "right" $ do
               let xs = PP.toList
                        (sig2
-                        P.>-> PS.runShaft (right $ PS.Shaft (PP.map (++ "!"))))
+                        P.>-> PS.shafted (right $ PS.Shaft (PP.map (++ "!"))))
               xs `shouldBe` ((\a -> case a of
                                      Left a' -> Left a'
                                      Right a' -> Right (a' ++ "!")) <$> data2)
@@ -85,7 +85,7 @@ main =
           it "+++" $ do
               let xs = PP.toList
                        (sig2
-                        P.>-> PS.runShaft (PS.Shaft (PP.map (+ 10)) +++ PS.Shaft (PP.map (++ "!"))))
+                        P.>-> PS.shafted (PS.Shaft (PP.map (+ 10)) +++ PS.Shaft (PP.map (++ "!"))))
               xs `shouldBe` ((\a -> case a of
                                      Left a' -> Left (a' + 10)
                                      Right a' -> Right (a' ++ "!")) <$> data2)
@@ -94,7 +94,7 @@ main =
           it "|||" $ do
               let xs = PP.toList
                        (sig2
-                        P.>-> PS.runShaft (PS.Shaft (PP.map (show . (+ 10))) ||| PS.Shaft (PP.map (++ "!"))))
+                        P.>-> PS.shafted (PS.Shaft (PP.map (show . (+ 10))) ||| PS.Shaft (PP.map (++ "!"))))
               xs `shouldBe` ((\a -> case a of
                                      Left a' -> show (a' + 10)
                                      Right a' -> a' ++ "!") <$> data2)
