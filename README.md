@@ -4,3 +4,8 @@
 Allows Category, Arrow, and ArrowChoice instances for Pipes.Pipe, using newtype wrapper 'Shaft'
 
 See also [slides](http://www.slideshare.net/LouisPan3/composable-widgets-with-reactive-pipes).
+
+# Changelog
+
+* 0.3.0.0
+ - Shaft destructor is now named fromShaft
